@@ -1,36 +1,15 @@
 ﻿/* GUNDAM STRIKER
 
 Ein kleines Round-Based Text Command Fighting Game :D */
-//Eigenschaften zum einbauen: „Angriff“, „Item“, „HP“, „Skill“, „Bot“, „Runde“
 
-//Nutze "using static System.Console" um nicht jedes mal "console." zu schreiben
-using static System.Console;
+using System.IO; // Wichtig, damit File.ReadAllText funktioniert
+using static System.Console; //Nutze "using static System.Console" um nicht jedes mal "console." zu schreiben
 
 //Titelscreen
+Clear();
 Console.ForegroundColor = ConsoleColor.DarkRed;
-WriteLine(@"
-
->>===================================================================<<
-|| __      __       .__                                  __          ||
-||/  \    /  \ ____ |  |   ____  ____   _____   ____   _/  |_  ____  ||
-||\   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \  \   __\/  _ \ ||
-|| \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/   |  | (  <_> )||
-||  \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >  |__|  \____/ ||
-||       \/       \/          \/            \/     \/                ||
-||  ________                  .___                                   ||
-|| /  _____/ __ __  ____    __| _/____    _____                      ||
-||/   \  ___|  |  \/    \  / __ |\__  \  /     \                     ||
-||\    \_\  \  |  /   |  \/ /_/ | / __ \|  Y Y  \                    ||
-|| \______  /____/|___|  /\____ |(____  /__|_|  /                    ||
-||        \/           \/      \/     \/      \/                     ||
-||  _________ __         .__ __                ._.                   ||
-|| /   _____//  |________|__|  | __ ___________| |                   ||
-|| \_____  \\   __\_  __ \  |  |/ // __ \_  __ \ |                   ||
-|| /        \|  |  |  | \/  |    <\  ___/|  | \/\|                   ||
-||/_______  /|__|  |__|  |__|__|_ \\___  >__|   __                   ||
-||        \/                     \/    \/       \/                   ||
->>===================================================================<<
-");
+string GundamStrikerTitle = AsciiArtLoader.LoadArt("Assets/GundamStrikerTitel.txt");
+WriteLine($"{GundamStrikerTitle}");
 
 Thread.Sleep (2000);
 
@@ -53,17 +32,49 @@ else
     WriteLine ($"{PlayerName} nice to meet you.");
 }
 
-Thread.Sleep (2000);
+Thread.Sleep (3000);
 
+WriteLine ("Come with me i show you're new Machine, hope it's to your taste.");
+
+Thread.Sleep (3500);
+Clear();
+
+Console.ForegroundColor = ConsoleColor.DarkRed;
+string GundamArt = AsciiArtLoader.LoadArt("Assets/GundamArt.txt");
+WriteLine(GundamArt);
+
+Thread.Sleep (3000);
 //Tutorial Encounter
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine ($"{PlayerName} here is a little training course for ya.");
 
-Character player = new Character (PlayerName, 100, 50, 20);
+//Vergebe Variable in meiner Character class um sie ins BattleSystem einzufügen
+Character player = new Character (PlayerName, 100, 30, 10);
 var TutorialBot = new Character ("Tutorial-Bot", 50, 25, 10);
 
+//Ruft BattleSystem auf und geht durch den Battle Loop
 BattleSystem.StartBattle(player, TutorialBot);
 
+WriteLine("Not bad, but here come's another, harder one"); 
+var Striker01 = new Character("Striker01", 75, 27, 10);
+BattleSystem.StartBattle(player, Striker01);
 
-WriteLine ("===Credits===");
+WriteLine("===Credits===");
 WriteLine(">Titelscreen from https://www.asciiart.eu/text-to-ascii-art");
+WriteLine(">Gundam Art from http://aa.en.utf8art.com/iconaa");
+WriteLine(">Gundam Art formatting at https://www.asciiart.eu/image-to-ascii");
+
+static class AsciiArtLoader //Kleine Funktion um AsciiArt aus txt zu laden
+{
+    public static string LoadArt(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            return File.ReadAllText(filePath);
+        }
+        else
+        {
+            return "[ASCII Art not found]";
+        }
+    }
+}

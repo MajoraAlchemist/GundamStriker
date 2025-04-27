@@ -3,3 +3,5 @@
 !.gitignore
 !Character.cs
 !BattleSystem.cs
+!AsciiArtLoader
+!Assets
