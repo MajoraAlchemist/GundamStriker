@@ -4,4 +4,5 @@
 !Character.cs
 !BattleSystem.cs
 !AsciiArtLoader
-!Assets/** */
+!Assets
+!Assets/** 
