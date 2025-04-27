@@ -4,8 +4,6 @@ Ein kleines Round-Based Text Command Fighting Game :D */
 //Eigenschaften zum einbauen: „Angriff“, „Item“, „HP“, „Skill“, „Bot“, „Runde“
 
 //Nutze "using static System.Console" um nicht jedes mal "console." zu schreiben
-using System;
-using System.Runtime.InteropServices;
 using static System.Console;
 
 //Titelscreen
@@ -57,21 +55,14 @@ else
 
 Thread.Sleep (2000);
 
-//Player Basic Stats
-int Health = 100;
-int AttackPower = 10;
-int Defense = 10;
-
 //Tutorial Encounter
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine ($"{PlayerName} here is a little training course for ya.");
 
-int TutorialBotHealth = 50;
-int TutorialBotAttackPower = 2;
-int TutorialBotDefense = 2; 
+Character player = new Character (PlayerName, 100, 50, 20);
+var TutorialBot = new Character ("Tutorial-Bot", 50, 25, 10);
 
-while (TutorialBotHealth > 0 && Health > 0);
-
+BattleSystem.StartBattle(player, TutorialBot);
 
 
 WriteLine ("===Credits===");
