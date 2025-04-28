@@ -1,10 +1,10 @@
 *
+!README
 !ProjectGundamStriker.csproj
 !ProjectGundamStriker.sln
 !Program.cs
 !.gitignore
-!Character.cs
-!BattleSystem.cs
-!AsciiArtLoader
 !Assets
 !Assets/** 
+!HelpSystems
+!HelpSystems/**

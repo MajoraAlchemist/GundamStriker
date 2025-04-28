@@ -39,6 +39,7 @@ WriteLine ("Come with me i show you're new Machine, hope it's to your taste.");
 Thread.Sleep (3500);
 Clear();
 
+//Lädt AsciiArt aus txt und stellt sie in Rot da.
 Console.ForegroundColor = ConsoleColor.DarkRed;
 string GundamArt = AsciiArtLoader.LoadArt("Assets/GundamArt.txt");
 WriteLine(GundamArt);
