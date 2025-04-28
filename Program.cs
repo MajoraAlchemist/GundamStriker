@@ -39,7 +39,7 @@ WriteLine ("Come with me i show you're new Machine, hope it's to your taste.");
 Thread.Sleep (3500);
 Clear();
 
-//Lädt AsciiArt aus txt und stellt sie in Rot da.
+//Lädt AsciiArt aus .txt und stellt sie in Rot da.
 Console.ForegroundColor = ConsoleColor.DarkRed;
 string GundamArt = AsciiArtLoader.LoadArt("Assets/GundamArt.txt");
 WriteLine(GundamArt);
@@ -65,17 +65,13 @@ WriteLine(">Titelscreen from https://www.asciiart.eu/text-to-ascii-art");
 WriteLine(">Gundam Art from http://aa.en.utf8art.com/iconaa");
 WriteLine(">Gundam Art formatting at https://www.asciiart.eu/image-to-ascii");
 
-static class AsciiArtLoader //Kleine Funktion um AsciiArt aus txt zu laden
-{
-    public static string LoadArt(string filePath)
-    {
-        if (File.Exists(filePath))
-        {
-            return File.ReadAllText(filePath);
-        }
-        else
-        {
-            return "[ASCII Art not found]";
-        }
-    }
-}
+Thread.Sleep (3500);
+
+//Endscreen
+ForegroundColor = ConsoleColor.DarkMagenta;
+string TheEnd = AsciiArtLoader.LoadArt("Assets/TheEnd.txt");
+WriteLine(TheEnd);
+
+Thread.Sleep(4000);
+
+Environment.Exit(0);
